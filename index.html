@@ -64,26 +64,26 @@
     </section>
 
     <main class="overflow-y-auto h-dvh" id="home">
-      <section class="h-dvh">
+      <section class="overflow-hidden h-svh">
         <div
           id="secondary"
-          class="relative z-10 flex flex-col w-full h-full bg-center bg-no-repeat bg-cover"
+          class="relative flex flex-col w-full h-full bg-center bg-no-repeat bg-cover"
           style="background-image: url('./assets/images/bg-secondary.jpg')"
         >
           <div class="absolute inset-0 bg-black/50"></div>
 
           <!-- Secondary Image -->
-          <div class="absolute bottom-0 left-0 z-10 w-full">
+          <div class="absolute bottom-0 left-0 z-10 flex justify-start w-full">
             <img
               alt="secondary"
               src="./assets/images/bg-secondary.jpg"
-              class="w-3/4 h-[70svh] object-cover rounded-tr-[4rem] border-2 border-white"
+              class="w-3/4 h-[clamp(200px,70svh,500px)] object-cover rounded-tr-[4rem] border-2 border-white"
             />
           </div>
 
           <!-- Title & Countdown -->
           <div
-            class="flex flex-col gap-2 mx-auto mt-4 text-center text-white z-[999] w-full"
+            class="flex flex-col gap-2 mx-auto mt-6 text-center text-white z-[999] w-full"
           >
             <p class="font-poppins text-md">The Wedding Of</p>
             <h1 class="text-3xl font-ovo">Christin & Vendi</h1>
@@ -99,31 +99,32 @@
             <div
               class="flex flex-col items-center px-4 py-1 border-t-2 border-b-2 border-white rounded-xl"
             >
-              <p id="days" class="text-2xl font-bold">00</p>
+              <p id="days" class="text-2xl font-bold">127</p>
               <span class="text-[12px]">Days</span>
             </div>
             <div
               class="flex flex-col items-center px-4 py-1 border-t-2 border-b-2 border-white rounded-xl"
             >
-              <p id="hours" class="text-2xl font-bold">00</p>
+              <p id="hours" class="text-2xl font-bold">14</p>
               <span class="text-[12px]">Hours</span>
             </div>
             <div
               class="flex flex-col items-center px-4 py-1 border-t-2 border-b-2 border-white rounded-xl"
             >
-              <p id="minutes" class="text-2xl font-bold">00</p>
+              <p id="minutes" class="text-2xl font-bold">29</p>
               <span class="text-[12px]">Minutes</span>
             </div>
             <div
               class="flex flex-col items-center px-4 py-1 border-t-2 border-b-2 border-white rounded-xl"
             >
-              <p id="seconds" class="text-2xl font-bold">00</p>
+              <p id="seconds" class="text-2xl font-bold">11</p>
               <span class="text-[12px]">Seconds</span>
             </div>
           </div>
 
+          <!-- Garis Vertical -->
           <div
-            class="absolute bottom-0 right-6 z-10 w-[2px] h-[70vh] bg-white/60"
+            class="absolute bottom-0 right-6 z-10 w-[2px] h-[clamp(200px,70svh,500px)] bg-white/60"
           ></div>
         </div>
       </section>
