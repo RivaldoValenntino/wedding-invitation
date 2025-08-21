@@ -17,6 +17,9 @@
   pointer-events: none;
 }
 
+.bgSecondary {
+  aspect-ratio: 16/9;
+}
 ::-webkit-scrollbar {
   display: none;
 }

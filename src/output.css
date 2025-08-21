@@ -738,12 +738,16 @@ video {
   display: none;
 }
 
+.aspect-\[3\/4\] {
+  aspect-ratio: 3/4;
+}
+
 .h-14 {
   height: 3.5rem;
 }
 
-.h-\[60vh\] {
-  height: 60vh;
+.h-\[30rem\] {
+  height: 30rem;
 }
 
 .h-\[70vh\] {
@@ -760,6 +764,30 @@ video {
 
 .h-screen {
   height: 100vh;
+}
+
+.h-auto {
+  height: auto;
+}
+
+.h-1\/2 {
+  height: 50%;
+}
+
+.h-\[70dvh\] {
+  height: 70dvh;
+}
+
+.h-\[70svh\] {
+  height: 70svh;
+}
+
+.max-h-\[70vh\] {
+  max-height: 70vh;
+}
+
+.max-h-\[75vh\] {
+  max-height: 75vh;
 }
 
 .w-10 {
@@ -782,6 +810,10 @@ video {
   width: 100%;
 }
 
+.w-1\/2 {
+  width: 50%;
+}
+
 .max-w-\[24rem\] {
   max-width: 24rem;
 }
@@ -790,16 +822,28 @@ video {
   max-width: 32rem;
 }
 
+.max-w-md {
+  max-width: 28rem;
+}
+
+.max-w-sm {
+  max-width: 24rem;
+}
+
+.max-w-\[2rem\] {
+  max-width: 2rem;
+}
+
+.max-w-\[20rem\] {
+  max-width: 20rem;
+}
+
 .flex-grow {
   flex-grow: 1;
 }
 
 .cursor-pointer {
   cursor: pointer;
-}
-
-.snap-start {
-  scroll-snap-align: start;
 }
 
 .flex-col {
@@ -848,6 +892,10 @@ video {
 
 .rounded-tr-\[4rem\] {
   border-top-right-radius: 4rem;
+}
+
+.rounded-tr-\[clamp\(2rem\2c 6vw\2c 4rem\)\] {
+  border-top-right-radius: clamp(2rem,6vw,4rem);
 }
 
 .border {
@@ -1099,6 +1147,10 @@ video {
   pointer-events: none;
 }
 
+.bgSecondary {
+  aspect-ratio: 16/9;
+}
+
 ::-webkit-scrollbar {
   display: none;
 }
@@ -1233,4 +1285,10 @@ video {
 
 .hover\:bg-primary\/80:hover {
   background-color: rgb(167 111 111 / 0.8);
+}
+
+@media (min-width: 640px) {
+  .sm\:aspect-\[16\/9\] {
+    aspect-ratio: 16/9;
+  }
 }
