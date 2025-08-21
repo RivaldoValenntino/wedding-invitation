@@ -9,6 +9,14 @@
   background-repeat: no-repeat;
 }
 
+#landing {
+  transition: opacity 0.5s ease;
+}
+.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
 ::-webkit-scrollbar {
   display: none;
 }

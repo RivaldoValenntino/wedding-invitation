@@ -666,11 +666,6 @@ video {
   margin-bottom: 1rem;
 }
 
-.my-8 {
-  margin-top: 2rem;
-  margin-bottom: 2rem;
-}
-
 .mb-2 {
   margin-bottom: 0.5rem;
 }
@@ -689,6 +684,10 @@ video {
 
 .mb-6 {
   margin-bottom: 1.5rem;
+}
+
+.mb-8 {
+  margin-bottom: 2rem;
 }
 
 .me-2 {
@@ -721,10 +720,6 @@ video {
 
 .mt-80 {
   margin-top: 20rem;
-}
-
-.mb-8 {
-  margin-bottom: 2rem;
 }
 
 .block {
@@ -1093,6 +1088,15 @@ video {
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
+}
+
+#landing {
+  transition: opacity 0.5s ease;
+}
+
+.hidden {
+  opacity: 0;
+  pointer-events: none;
 }
 
 ::-webkit-scrollbar {

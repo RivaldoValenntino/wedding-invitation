@@ -3,6 +3,12 @@ document.addEventListener("DOMContentLoaded", () => {
   const openBtn = document.getElementById("openBtn");
   const landing = document.getElementById("landing");
   const home = document.getElementById("home");
+  const guestName = document.getElementById("guest");
+  const urlParams = new URLSearchParams(window.location.search);
+  const nama = urlParams.get("n") || "";
+  if (nama) {
+    guestName.innerText = nama;
+  }
 
   if (!openBtn || !landing || !home) return;
 
@@ -31,9 +37,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
   let isPlaying = false;
 
-  // Saat user klik OPEN INVITATION
-  openBtn.addEventListener("click", () => {
-    // Tampilkan tombol musik
+  openBtn.addEventListener("click", (ev) => {
+    ev.preventDefault();
+
+    unlockScroll();
+    home.scrollIntoView({ behavior: "smooth" });
     musicBtn.classList.remove("hidden");
 
     // Autoplay musik
@@ -46,6 +54,10 @@ document.addEventListener("DOMContentLoaded", () => {
       .catch((err) => {
         console.log("Autoplay gagal: ", err);
       });
+    // Fade out landing setelah sedikit delay
+    setTimeout(() => {
+      landing.classList.add("hidden");
+    }, 500);
   });
 
   // Toggle play/pause saat tombol musik diklik
