@@ -37,29 +37,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   let isPlaying = false;
 
-  openBtn.addEventListener("click", (ev) => {
-    ev.preventDefault();
-
-    unlockScroll();
-    home.scrollIntoView({ behavior: "smooth" });
-    musicBtn.classList.remove("hidden");
-
-    // Autoplay musik
-    bgMusic
-      .play()
-      .then(() => {
-        isPlaying = true;
-        musicBtn.classList.add("playing");
-      })
-      .catch((err) => {
-        console.log("Autoplay gagal: ", err);
-      });
-    // Fade out landing setelah sedikit delay
-    setTimeout(() => {
-      landing.classList.add("hidden");
-    }, 500);
-  });
-
   // Toggle play/pause saat tombol musik diklik
   musicBtn.addEventListener("click", () => {
     if (isPlaying) {
@@ -109,24 +86,18 @@ document.addEventListener("DOMContentLoaded", () => {
     document.body.classList.remove("overflow-hidden"); // in case you use Tailwind class
 
     home.scrollIntoView({ behavior: "smooth", block: "start" });
-
-    // hide landing when #home is visible using IntersectionObserver (more reliable than setTimeout)
-    const io = new IntersectionObserver(
-      (entries, observer) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            // small delay to let scroll finish visually
-            setTimeout(() => {
-              landing.style.display = "none";
-            }, 80);
-            observer.disconnect();
-          }
-        });
-      },
-      { threshold: 0.5 }
-    );
-
-    io.observe(home);
+    bgMusic
+      .play()
+      .then(() => {
+        isPlaying = true;
+        musicBtn.classList.add("playing");
+      })
+      .catch((err) => {
+        console.log("Autoplay gagal: ", err);
+      });
+    setTimeout(() => {
+      landing.classList.add("hidden");
+    }, 500);
   });
 
   // COUNTDOWN SCRIPT
