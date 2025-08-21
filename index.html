@@ -127,16 +127,184 @@
       </section>
 
       <section
-        class="flex items-center justify-center h-screen text-white snap-start bg-primary"
+        class="flex flex-col text-center text-white font-ovo snap-start bg-primary"
       >
         <div class="p-8">
-          <h2 class="text-2xl">Our Journey</h2>
-          <p>Di sini konten lain akan muncul setelah user scroll dari #home.</p>
+          <h1 class="relative my-4 text-2xl" id="ourJourney">Our Journey</h1>
+          <p>
+            “Sehati sepikirlah kamu, dan hiduplah dalam damai sejahtera; maka
+            Allah, sumber kasih dan damai sejahtera akan menyertai kamu!” - 2
+            Korintus 13:11B (TB)"
+          </p>
         </div>
-      </section>
 
-      <section class="flex items-center justify-center h-screen snap-start">
-        <h2 class="text-2xl">Section 3</h2>
+        <!-- Card -->
+        <div class="flex justify-center py-8 mt-8">
+          <div
+            class="flex flex-col items-center justify-center w-full shadow-lg rounded-xl font-ovo"
+            id="card-couple"
+            style="
+              padding: 2rem;
+              background-color: #fff !important;
+              color: #000 !important;
+              max-width: 24rem;
+            "
+          >
+            <!-- Title -->
+            <h2 class="mb-2 font-serif text-2xl" id="brideGroom">
+              The Bride & Groom
+            </h2>
+            <p class="mb-6 text-sm text-gray-600">
+              Dengan Kasih Karunia Tuhan yang mempersatukan Kami Percaya bahwa
+              cinta adalah anugerah terindah dari Tuhan,Kini saatnya kami
+              melangkah dalam ikatan kudus pernikahan, dengan penuh syukur dan
+              kerendahan hati, kami mengundang kehadiran dan doa restu
+              Bapak/Ibu/Saudara/i.
+            </p>
+
+            <div class="mb-6">
+              <img
+                src="./assets/images/brides.jpg"
+                alt="Bride"
+                class="w-full mb-4 border-2 border-white shadow-xl rounded-xl"
+              />
+              <h3 class="font-serif text-lg font-bold">Fendy Ismail</h3>
+              <p class="text-sm text-gray-600">
+                The Son of<br /><span class="font-medium text-gray-800"
+                  >Putra Bpk. Bong Hian Lip (Basri) dan Ibu
+                  Tjhin djoen tjiauw</span
+                >
+              </p>
+              <a
+                href="#"
+                class="inline-flex items-center gap-2 px-4 py-2 mt-3 text-sm text-white bg-black rounded-md"
+              >
+                <i class="bi bi-instagram"></i>
+                Instagram
+              </a>
+            </div>
+
+            <div class="flex items-center my-4">
+              <hr
+                class="flex-grow border-t"
+                style="border-color: #000 !important"
+              />
+              <span class="mx-2 text-lg">&</span>
+              <hr
+                class="flex-grow border-t"
+                style="border-color: #000 !important"
+              />
+            </div>
+
+            <div>
+              <img
+                src="./assets/images/groom.jpg"
+                alt="Groom"
+                class="w-full mb-4 border-2 border-white shadow-xl rounded-xl"
+              />
+              <h3 class="mt-4 font-serif text-lg font-bold">
+                Christin Lygia Hadyan
+              </h3>
+              <p class="mt-2 text-sm text-gray-600">
+                The Daughter of<br /><span class="font-medium text-gray-800"
+                  >Putri Bapak Tjia tjeng Hok (Alm) dan Ibu Yani maryani</span
+                >
+              </p>
+              <a
+                href="#"
+                class="inline-flex items-center gap-2 px-4 py-2 mt-3 text-sm text-white bg-black rounded-md"
+              >
+                <i class="bi bi-instagram"></i>
+                Instagram
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="flex justify-center py-8 mt-8">
+          <div
+            class="flex flex-col items-center justify-center w-full font-ovo"
+          >
+            <!-- Title -->
+            <h2 class="mb-2 font-serif text-2xl" id="weddingEvent">
+              Wedding Event
+            </h2>
+
+            <div
+              class="w-full max-w-[24rem] overflow-hidden shadow-xl rounded-md border-white border-2"
+              id="weddingEventCard"
+            >
+              <!-- Marriage Section -->
+              <div class="relative px-6 py-10 text-center text-white">
+                <div class="relative z-10">
+                  <i class="text-xl text-white bi bi-heart-fill"></i>
+                  <i class="mx-1 text-3xl text-white bi bi-infinity"></i>
+                  <i class="text-xl text-white bi bi-heart-fill"></i>
+
+                  <h2 class="mt-2 font-serif text-3xl">Marriage</h2>
+                  <p class="mt-3 text-lg font-semibold">
+                    Saturday, December 27th, 2025
+                  </p>
+                  <p class="text-sm">09 PM - Until End</p>
+
+                  <div class="flex items-center justify-center mt-4">
+                    <hr class="w-10 border-gray-400" />
+                    <i class="mx-3 text-2xl bi bi-geo-alt-fill"></i>
+                    <hr class="w-10 border-gray-400" />
+                  </div>
+
+                  <h3 class="mt-3 font-bold">Ballroom Hotel Santika</h3>
+                  <p class="text-sm leading-6">
+                    Jl. Pahlawan Seribu CBD Lot VII B, Lengkong Gudang, Kec.
+                    Serpong,<br />
+                    Kota Tangerang Selatan, Banten
+                  </p>
+
+                  <a
+                    href="#"
+                    class="inline-flex items-center px-4 py-2 mt-4 text-sm text-white bg-black rounded-md"
+                  >
+                    <i class="bi bi-map me-2"></i> Google Maps
+                  </a>
+                </div>
+              </div>
+
+              <!-- Reception Section -->
+              <div class="relative px-6 py-10 text-center text-white">
+                <div class="relative z-10">
+                  <i class="text-xl text-white bi bi-heart-fill"></i>
+                  <i class="mx-1 text-3xl text-white bi bi-infinity"></i>
+                  <i class="text-xl text-white bi bi-heart-fill"></i>
+
+                  <h2 class="mt-2 font-serif text-3xl">Reception</h2>
+                  <p class="mt-3 text-lg font-semibold">
+                    Saturday, December 27th, 2025
+                  </p>
+                  <p class="text-sm">10 PM - Until End</p>
+
+                  <div class="flex items-center justify-center mt-4">
+                    <hr class="w-10 border-gray-400" />
+                    <i class="mx-3 text-2xl bi bi-geo-alt-fill"></i>
+                    <hr class="w-10 border-gray-400" />
+                  </div>
+
+                  <h3 class="mt-3 font-bold">Ballroom Hotel Santika</h3>
+                  <p class="text-sm leading-6">
+                    Jl. Pahlawan Seribu CBD Lot VII B, Lengkong Gudang, Kec.
+                    Serpong,<br />
+                    Kota Tangerang Selatan, Banten
+                  </p>
+
+                  <a
+                    href="#"
+                    class="inline-flex items-center px-4 py-2 mt-4 text-sm text-white bg-black rounded-md"
+                  >
+                    <i class="bi bi-map me-2"></i> Google Maps
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </section>
     </main>
     <script
