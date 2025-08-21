@@ -592,6 +592,10 @@ video {
   visibility: visible;
 }
 
+.fixed {
+  position: fixed;
+}
+
 .absolute {
   position: absolute;
 }
@@ -608,6 +612,10 @@ video {
   bottom: 0px;
 }
 
+.bottom-6 {
+  bottom: 1.5rem;
+}
+
 .left-0 {
   left: 0px;
 }
@@ -618,6 +626,10 @@ video {
 
 .z-10 {
   z-index: 10;
+}
+
+.z-50 {
+  z-index: 50;
 }
 
 .z-\[999\] {
@@ -652,6 +664,11 @@ video {
 .my-4 {
   margin-top: 1rem;
   margin-bottom: 1rem;
+}
+
+.my-8 {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
 }
 
 .mb-2 {
@@ -706,6 +723,10 @@ video {
   margin-top: 20rem;
 }
 
+.mb-8 {
+  margin-bottom: 2rem;
+}
+
 .block {
   display: block;
 }
@@ -720,6 +741,10 @@ video {
 
 .hidden {
   display: none;
+}
+
+.h-14 {
+  height: 3.5rem;
 }
 
 .h-\[60vh\] {
@@ -746,6 +771,10 @@ video {
   width: 2.5rem;
 }
 
+.w-14 {
+  width: 3.5rem;
+}
+
 .w-3\/4 {
   width: 75%;
 }
@@ -768,6 +797,10 @@ video {
 
 .flex-grow {
   flex-grow: 1;
+}
+
+.cursor-pointer {
+  cursor: pointer;
 }
 
 .snap-start {
@@ -804,6 +837,10 @@ video {
 
 .rounded {
   border-radius: 0.25rem;
+}
+
+.rounded-full {
+  border-radius: 9999px;
 }
 
 .rounded-md {
@@ -854,10 +891,6 @@ video {
 .border-white {
   --tw-border-opacity: 1;
   border-color: rgb(255 255 255 / var(--tw-border-opacity, 1));
-}
-
-.border-white\/30 {
-  border-color: rgb(255 255 255 / 0.3);
 }
 
 .bg-black {
@@ -1147,6 +1180,25 @@ video {
   opacity: 0.3;
 }
 
+#weddingEvent {
+  position: relative;
+}
+
+#weddingEvent::after {
+  content: "Wedding Event";
+  position: absolute;
+  top: 0px;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: 10px;
+  display: inline-block;
+  width: 100%;
+  text-wrap: none;
+  font-size: 1.5rem;
+  color: #fff;
+  opacity: 0.3;
+}
+
 #weddingEventCard {
   position: relative;
   background-image: url("../assets/images/bg-secondary.jpg");
@@ -1163,6 +1215,16 @@ video {
   background: rgba(0, 0, 0, 0.7);
   /* Warna hitam semi-transparan */
   z-index: 1;
+}
+
+.playing {
+  animation: spin 3s linear infinite;
+}
+
+@keyframes spin {
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 .hover\:bg-primary\/80:hover {

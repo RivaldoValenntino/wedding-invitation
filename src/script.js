@@ -25,8 +25,45 @@ document.addEventListener("DOMContentLoaded", () => {
     if (blocked.includes(e.key)) e.preventDefault();
   };
 
+  // AUTOPLAY MUSIC
+  const musicBtn = document.getElementById("musicBtn");
+  const bgMusic = document.getElementById("bgMusic");
+
+  let isPlaying = false;
+
+  // Saat user klik OPEN INVITATION
+  openBtn.addEventListener("click", () => {
+    // Tampilkan tombol musik
+    musicBtn.classList.remove("hidden");
+
+    // Autoplay musik
+    bgMusic
+      .play()
+      .then(() => {
+        isPlaying = true;
+        musicBtn.classList.add("playing");
+      })
+      .catch((err) => {
+        console.log("Autoplay gagal: ", err);
+      });
+  });
+
+  // Toggle play/pause saat tombol musik diklik
+  musicBtn.addEventListener("click", () => {
+    if (isPlaying) {
+      bgMusic.pause();
+      musicBtn.classList.remove("playing");
+    } else {
+      bgMusic.play();
+      musicBtn.classList.add("playing");
+    }
+    isPlaying = !isPlaying;
+  });
+
+  // END
   function lockScroll() {
     // block CSS scrolling
+    musicBtn.style.opacity = "0";
     document.documentElement.style.overflow = "hidden";
     document.body.style.overflow = "hidden";
 
@@ -36,6 +73,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function unlockScroll() {
+    musicBtn.style.opacity = "1";
     document.documentElement.style.overflow = "";
     document.body.style.overflow = "";
     window.removeEventListener("wheel", preventDefault);
@@ -137,6 +175,33 @@ document.addEventListener("DOMContentLoaded", () => {
         duration: 0.6,
         ease: "back.out(1.5)",
         delay: 0.5,
+      });
+    }
+  }
+
+  const journeySection = document.getElementById("ourJourneySection");
+
+  if (window.gsap && journeySection) {
+    const allTexts = journeySection.querySelectorAll(".fade-sequence");
+    const btn = document.querySelectorAll(".fade-opacity-btn");
+
+    // Animasi fade-in dari atas untuk teks dan konten
+    gsap.from(allTexts, {
+      y: -30,
+      opacity: 0,
+      duration: 0.7,
+      ease: "power3.out",
+      stagger: 0.15, // biar muncul satu-satu
+      delay: 0.2,
+    });
+
+    // Animasi khusus untuk tombol (hanya opacity)
+    if (btn) {
+      gsap.from(btn, {
+        opacity: 0,
+        duration: 0.8,
+        ease: "power2.out",
+        delay: 0.8, // muncul setelah semua teks
       });
     }
   }

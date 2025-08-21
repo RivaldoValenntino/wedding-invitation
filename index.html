@@ -128,10 +128,13 @@
 
       <section
         class="flex flex-col text-center text-white font-ovo snap-start bg-primary"
+        id="ourJourneySection"
       >
         <div class="p-8">
-          <h1 class="relative my-4 text-2xl" id="ourJourney">Our Journey</h1>
-          <p>
+          <h1 class="relative my-4 text-2xl fade-sequence" id="ourJourney">
+            Our Journey
+          </h1>
+          <p class="fade-sequence">
             “Sehati sepikirlah kamu, dan hiduplah dalam damai sejahtera; maka
             Allah, sumber kasih dan damai sejahtera akan menyertai kamu!” - 2
             Korintus 13:11B (TB)"
@@ -139,7 +142,7 @@
         </div>
 
         <!-- Card -->
-        <div class="flex justify-center py-8 mt-8">
+        <div class="flex justify-center py-8 mt-8 fade-sequence">
           <div
             class="flex flex-col items-center justify-center w-full shadow-lg rounded-xl font-ovo"
             id="card-couple"
@@ -220,12 +223,12 @@
             </div>
           </div>
         </div>
-        <div class="flex justify-center py-8 mt-8">
+        <div class="flex justify-center py-8 mt-8 fade-sequence">
           <div
             class="flex flex-col items-center justify-center w-full font-ovo"
           >
             <!-- Title -->
-            <h2 class="mb-2 font-serif text-2xl" id="weddingEvent">
+            <h2 class="mb-8 font-serif text-2xl" id="weddingEvent">
               Wedding Event
             </h2>
 
@@ -261,7 +264,7 @@
 
                   <a
                     href="#"
-                    class="inline-flex items-center px-4 py-2 mt-4 text-sm text-white bg-black rounded-md"
+                    class="inline-flex items-center px-4 py-2 mt-4 text-sm text-white bg-black rounded-md fade-opacity-btn"
                   >
                     <i class="bi bi-map me-2"></i> Google Maps
                   </a>
@@ -296,7 +299,7 @@
 
                   <a
                     href="#"
-                    class="inline-flex items-center px-4 py-2 mt-4 text-sm text-white bg-black rounded-md"
+                    class="inline-flex items-center px-4 py-2 mt-4 text-sm text-white bg-black rounded-md fade-opacity-btn"
                   >
                     <i class="bi bi-map me-2"></i> Google Maps
                   </a>
@@ -305,6 +308,18 @@
             </div>
           </div>
         </div>
+
+        <div
+          id="musicBtn"
+          class="fixed z-50 flex items-center justify-center text-white rounded-full shadow-lg cursor-pointer bottom-6 right-6 w-14 h-14 bg-primary hover:bg-primary/80"
+        >
+          <i class="text-xl bi bi-music-note-beamed"></i>
+        </div>
+
+        <!-- Audio Element -->
+        <audio id="bgMusic" loop>
+          <source src="./assets/audio/audio.mp3" type="audio/mpeg" />
+        </audio>
       </section>
     </main>
     <script
