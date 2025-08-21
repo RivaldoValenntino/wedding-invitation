@@ -134,13 +134,12 @@ document.addEventListener("DOMContentLoaded", () => {
   // GSAP SCRIPT
 
   if (window.gsap && landingContent) {
-    // semua child kecuali tombol (#openBtn)
+    // Landing Section Anim
     const allTargets = landingContent.querySelectorAll(
       ".landingChild > *:not(#openBtn)"
     );
     const btn = document.getElementById("openBtn");
 
-    // Fade-in untuk semua elemen kecuali tombol (staggered)
     gsap.from(allTargets, {
       y: -30,
       opacity: 0,
@@ -160,32 +159,38 @@ document.addEventListener("DOMContentLoaded", () => {
         delay: 0.5,
       });
     }
-  }
 
-  const journeySection = document.getElementById("ourJourneySection");
+    // Animasi scroll di section berikutnya
+    const allTexts = document.querySelectorAll(".fade-sequence");
+    const btnSection = document.querySelectorAll(".fade-opacity-btn");
 
-  if (window.gsap && journeySection) {
-    const allTexts = journeySection.querySelectorAll(".fade-sequence");
-    const btn = document.querySelectorAll(".fade-opacity-btn");
-
-    // Animasi fade-in dari atas untuk teks dan konten
-    gsap.from(allTexts, {
-      y: -30,
-      opacity: 0,
-      duration: 0.7,
-      ease: "power3.out",
-      stagger: 0.15, // biar muncul satu-satu
-      delay: 0.2,
+    allTexts.forEach((el) => {
+      gsap.from(el, {
+        scrollTrigger: {
+          trigger: el,
+          start: "top 80%",
+          toggleActions: "restart none restart none", // biar muncul lagi tiap kali masuk viewport
+          scroller: "#home",
+        },
+        y: -30,
+        opacity: 0,
+        duration: 2,
+        ease: "power3.out",
+      });
     });
 
-    // Animasi khusus untuk tombol (hanya opacity)
-    if (btn) {
-      gsap.from(btn, {
+    btnSection.forEach((el) => {
+      gsap.from(el, {
+        scrollTrigger: {
+          trigger: el,
+          start: "top 85%",
+          toggleActions: "restart none restart none", // sama juga
+          scroller: "#home",
+        },
         opacity: 0,
-        duration: 0.8,
+        duration: 2,
         ease: "power2.out",
-        delay: 0.8, // muncul setelah semua teks
       });
-    }
+    });
   }
 });

@@ -714,16 +714,16 @@ video {
   margin-top: 1.25rem;
 }
 
+.mt-6 {
+  margin-top: 1.5rem;
+}
+
 .mt-8 {
   margin-top: 2rem;
 }
 
 .mt-80 {
   margin-top: 20rem;
-}
-
-.mt-6 {
-  margin-top: 1.5rem;
 }
 
 .block {
@@ -746,8 +746,8 @@ video {
   height: 3.5rem;
 }
 
-.h-\[70vh\] {
-  height: 70vh;
+.h-\[clamp\(200px\2c 70svh\2c 500px\)\] {
+  height: clamp(200px,70svh,500px);
 }
 
 .h-dvh {
@@ -760,22 +760,6 @@ video {
 
 .h-screen {
   height: 100vh;
-}
-
-.h-2\/4 {
-  height: 50%;
-}
-
-.h-1\/4 {
-  height: 25%;
-}
-
-.h-\[70svh\] {
-  height: 70svh;
-}
-
-.h-\[clamp\(200px\2c 70svh\2c 500px\)\] {
-  height: clamp(200px,70svh,500px);
 }
 
 .h-svh {
@@ -806,20 +790,8 @@ video {
   max-width: 20rem;
 }
 
-.max-w-\[720px\] {
-  max-width: 720px;
-}
-
 .max-w-lg {
   max-width: 32rem;
-}
-
-.max-w-\[920px\] {
-  max-width: 920px;
-}
-
-.max-w-\[500px\] {
-  max-width: 500px;
 }
 
 .flex-grow {
@@ -961,6 +933,10 @@ video {
 .object-cover {
   -o-object-fit: cover;
      object-fit: cover;
+}
+
+.p-2 {
+  padding: 0.5rem;
 }
 
 .p-3 {
@@ -1202,7 +1178,7 @@ video {
 }
 
 #brideGroom::after {
-  content: "The Bride & Groom";
+  content: "Mempelai";
   position: absolute;
   top: 0px;
   left: 50%;
