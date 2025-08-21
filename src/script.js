@@ -109,4 +109,35 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("seconds").innerText = seconds;
   }, 1000);
   //  END COUNTDOWN SCRIPT
+
+  // GSAP SCRIPT
+
+  if (window.gsap && landingContent) {
+    // semua child kecuali tombol (#openBtn)
+    const allTargets = landingContent.querySelectorAll(
+      ".landingChild > *:not(#openBtn)"
+    );
+    const btn = document.getElementById("openBtn");
+
+    // Fade-in untuk semua elemen kecuali tombol (staggered)
+    gsap.from(allTargets, {
+      y: -30,
+      opacity: 0,
+      duration: 0.7,
+      ease: "power3.out",
+      stagger: 0.08,
+      delay: 0.25,
+    });
+
+    if (btn) {
+      gsap.set(btn, { opacity: 1, transformOrigin: "50% 50%" });
+
+      gsap.from(btn, {
+        opacity: 0,
+        duration: 0.6,
+        ease: "back.out(1.5)",
+        delay: 0.5,
+      });
+    }
+  }
 });

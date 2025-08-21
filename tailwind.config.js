@@ -10,6 +10,7 @@ module.exports = {
     },
     fontFamily: {
       rubik: ["Rubik", "sans-serif"],
+      ovo: ["Ovo", "serif"],
       poppins: ["Poppins", "sans-serif"],
     },
   },
