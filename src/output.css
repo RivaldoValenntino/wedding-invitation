@@ -680,6 +680,10 @@ video {
   margin-top: 24rem;
 }
 
+.mt-80 {
+  margin-top: 20rem;
+}
+
 .block {
   display: block;
 }
@@ -692,8 +696,8 @@ video {
   display: none;
 }
 
-.h-\[65vh\] {
-  height: 65vh;
+.h-\[50vh\] {
+  height: 50vh;
 }
 
 .h-\[70vh\] {
@@ -718,6 +722,10 @@ video {
 
 .w-\[2px\] {
   width: 2px;
+}
+
+.w-\[48px\] {
+  width: 48px;
 }
 
 .w-full {
