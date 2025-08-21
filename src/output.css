@@ -720,6 +720,10 @@ video {
   height: 60dvh;
 }
 
+.h-\[70dvh\] {
+  height: 70dvh;
+}
+
 .w-3\/4 {
   width: 75%;
 }
