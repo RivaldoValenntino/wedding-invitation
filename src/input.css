@@ -85,6 +85,24 @@
   position: relative;
 }
 
+#bestWish {
+  position: relative;
+}
+
+#bestWish::after {
+  content: "Best Wish";
+  position: absolute;
+  top: 0px;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: 10px;
+  display: inline-block;
+  width: 100%;
+  text-wrap: none;
+  font-size: 1.5rem;
+  color: #fff;
+  opacity: 0.3;
+}
 #brideGroom::after {
   content: "Mempelai";
   position: absolute;

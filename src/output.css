@@ -963,20 +963,6 @@ video {
   background-color: rgb(255 255 255 / 0.6);
 }
 
-.bg-gradient-to-r {
-  background-image: linear-gradient(to right, var(--tw-gradient-stops));
-}
-
-.from-pink-600 {
-  --tw-gradient-from: #db2777 var(--tw-gradient-from-position);
-  --tw-gradient-to: rgb(219 39 119 / 0) var(--tw-gradient-to-position);
-  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
-}
-
-.to-red-500 {
-  --tw-gradient-to: #ef4444 var(--tw-gradient-to-position);
-}
-
 .bg-cover {
   background-size: cover;
 }
@@ -1008,6 +994,11 @@ video {
 
 .p-8 {
   padding: 2rem;
+}
+
+.px-3 {
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
 }
 
 .px-4 {
@@ -1053,11 +1044,6 @@ video {
 .py-8 {
   padding-top: 2rem;
   padding-bottom: 2rem;
-}
-
-.px-3 {
-  padding-left: 0.75rem;
-  padding-right: 0.75rem;
 }
 
 .text-center {
@@ -1110,10 +1096,6 @@ video {
   line-height: 1rem;
 }
 
-.text-\[10px\] {
-  font-size: 10px;
-}
-
 .font-bold {
   font-weight: 700;
 }
@@ -1153,11 +1135,6 @@ video {
 .text-white {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity, 1));
-}
-
-.text-yellow-300 {
-  --tw-text-opacity: 1;
-  color: rgb(253 224 71 / var(--tw-text-opacity, 1));
 }
 
 .opacity-80 {
@@ -1286,6 +1263,25 @@ video {
   position: relative;
 }
 
+#bestWish {
+  position: relative;
+}
+
+#bestWish::after {
+  content: "Best Wish";
+  position: absolute;
+  top: 0px;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: 10px;
+  display: inline-block;
+  width: 100%;
+  text-wrap: none;
+  font-size: 1.5rem;
+  color: #fff;
+  opacity: 0.3;
+}
+
 #brideGroom::after {
   content: "Mempelai";
   position: absolute;
@@ -1369,16 +1365,6 @@ input[type="number"] {
 
 .hover\:bg-primary\/80:hover {
   background-color: rgb(167 111 111 / 0.8);
-}
-
-.hover\:from-pink-700:hover {
-  --tw-gradient-from: #be185d var(--tw-gradient-from-position);
-  --tw-gradient-to: rgb(190 24 93 / 0) var(--tw-gradient-to-position);
-  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
-}
-
-.hover\:to-red-600:hover {
-  --tw-gradient-to: #dc2626 var(--tw-gradient-to-position);
 }
 
 .focus\:ring-2:focus {
