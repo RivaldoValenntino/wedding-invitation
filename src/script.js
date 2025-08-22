@@ -193,4 +193,178 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     });
   }
+
+  // SCRIPT COMMENT
+
+  // SCRIPT COMMENT
+
+  const API_URL = "https://filament-sticky-notes-c8na7.kinsta.app/api/comments";
+  let currentPage = 1;
+  let perPage = 5;
+
+  // Load comments
+  async function loadComments(page = 1) {
+    const res = await fetch(`${API_URL}?page=${page}&per_page=${perPage}`);
+    const data = await res.json();
+
+    // Update count
+    document.getElementById("commentCount").innerText = data.total;
+
+    const commentList = document.getElementById("commentList");
+    const pagination = document.getElementById("pagination");
+
+    if (data.data.length === 0) {
+      commentList.innerHTML = `<p class="text-center text-sm text-gray-200 italic">Belum ada komentar</p>`;
+      pagination.innerHTML = "";
+      return;
+    }
+
+    commentList.innerHTML = data.data
+      .map(
+        (c) => `
+    <div class="pb-6">
+      <p class="font-bold text-base flex gap-2">
+        ${c.name}
+        ${
+          c.is_attendance == 1
+            ? `<i class="bi bi-check-circle-fill" style="color: #22c55e !important;"></i>`
+            : `<i class="bi bi-x-circle-fill" style="color: #ef4444 !important;"></i>`
+        }
+      </p>
+      <p class="mt-1 text-sm leading-relaxed" style="text-align: left !important;">
+        ${c.comment ?? ""}
+      </p>
+    </div>
+  `
+      )
+      .join("");
+
+    renderPagination(data);
+  }
+
+  // Render pagination buttons
+  function renderPagination(data) {
+    const pagination = document.getElementById("pagination");
+    pagination.innerHTML = "";
+
+    if (data.last_page <= 1) return;
+
+    if (data.prev_page_url) {
+      const prevBtn = document.createElement("button");
+      prevBtn.innerText = "Previous";
+      prevBtn.className = "px-3 py-1 text-white hover:underline";
+      prevBtn.onclick = () => loadComments(data.current_page - 1);
+      pagination.appendChild(prevBtn);
+    }
+
+    for (let i = 1; i <= data.last_page; i++) {
+      const pageBtn = document.createElement("button");
+      pageBtn.innerText = i;
+      pageBtn.className =
+        "px-3 py-1 rounded-md " +
+        (i === data.current_page
+          ? "font-bold underline text-white"
+          : "text-white hover:underline");
+      pageBtn.onclick = () => loadComments(i);
+      pagination.appendChild(pageBtn);
+    }
+
+    if (data.next_page_url) {
+      const nextBtn = document.createElement("button");
+      nextBtn.innerText = "Next";
+      nextBtn.className = "px-3 py-1 text-white hover:underline";
+      nextBtn.onclick = () => loadComments(data.current_page + 1);
+      pagination.appendChild(nextBtn);
+    }
+  }
+
+  // Handle form submit
+  document
+    .getElementById("commentForm")
+    .addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      const btn = e.target.querySelector("button[type='submit']");
+      btn.disabled = true;
+      btn.innerText = "Loading...";
+
+      const payload = {
+        name: document.getElementById("name").value.trim(),
+        is_attendance: parseInt(document.getElementById("is_attendance").value),
+        guest_count:
+          parseInt(document.getElementById("guest_count").value) || 0,
+        comment: document.getElementById("comment").value.trim(),
+      };
+
+      // Validasi biar semua field wajib
+      if (!payload.name || payload.is_attendance === null || !payload.comment) {
+        btn.disabled = false;
+        btn.innerText = "Send";
+        return;
+      }
+
+      const res = await fetch(API_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+      console.log(payload);
+      console.log(res);
+
+      btn.disabled = false;
+      btn.innerText = "Send";
+
+      if (res.ok) {
+        document.getElementById("commentForm").reset();
+        document.getElementById("is_attendance").value = "";
+
+        // Alert sukses
+        const alert = document.createElement("p");
+        alert.innerText = "Komen berhasil dikirim";
+        alert.style.color = "#32a850";
+        document.getElementById("commentForm").appendChild(alert);
+
+        setTimeout(() => alert.remove(), 2000);
+
+        loadComments(1);
+      }
+    });
+
+  // Attendance dropdown
+  const attendanceBtn = document.getElementById("attendanceBtn");
+  const attendanceText = document.getElementById("attendanceText");
+  const attendanceOptions = document.getElementById("attendanceOptions");
+  const attendanceInput = document.getElementById("is_attendance");
+
+  attendanceBtn.addEventListener("click", () => {
+    attendanceOptions.classList.toggle("hidden");
+  });
+
+  attendanceOptions.querySelectorAll("li").forEach((item) => {
+    item.addEventListener("click", () => {
+      const value = item.getAttribute("data-value");
+      const label = item.innerText;
+      attendanceInput.value = value;
+      attendanceText.innerText = label;
+      attendanceText.classList.remove("text-gray-500");
+      attendanceOptions.classList.add("hidden");
+
+      const guestWrapper = document.getElementById("guestWrapper");
+      const guestSelect = document.getElementById("guest_count");
+
+      if (value === "1") {
+        guestWrapper.classList.remove("hidden");
+        guestSelect.setAttribute("required", "true"); // wajib diisi kalau Yes
+      } else {
+        guestWrapper.classList.add("hidden");
+        guestSelect.removeAttribute("required"); // hilangin required kalau bukan Yes
+        guestSelect.value = ""; // reset nilai
+      }
+    });
+  });
+
+  // Initial load
+  loadComments();
+
+  // END SCRIPT COMMENT
 });

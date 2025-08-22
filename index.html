@@ -309,6 +309,117 @@
             </div>
           </div>
         </div>
+        <section
+          id="commentSection"
+          class="py-12 text-white bg-primary font-ovo"
+        >
+          <div class="max-w-2xl px-6 mx-auto">
+            <!-- Title -->
+            <h2
+              class="flex items-center justify-center gap-1 mb-6 font-bold text-center text-md"
+            >
+              <i class="bi bi-chat-dots-fill"></i>
+              <span id="commentCount">0</span>Comments
+            </h2>
+
+            <!-- FORM -->
+            <form
+              id="commentForm"
+              class="p-6 mb-8 space-y-4 text-black bg-white shadow-lg rounded-2xl font-ovo"
+            >
+              <!-- Name -->
+              <input
+                type="text"
+                id="name"
+                placeholder="Your Name"
+                required
+                class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pink-500"
+              />
+
+              <!-- Custom Dropdown -->
+              <div class="relative">
+                <button
+                  type="button"
+                  id="attendanceBtn"
+                  class="flex items-center justify-between w-full px-3 py-1 bg-white border border-gray-300 rounded-lg focus:ring-2 focus:ring-pink-500"
+                >
+                  <span id="attendanceText" class="text-gray-500"
+                    >Confirmation of Attendance</span
+                  >
+                  <i class="bi bi-chevron-down"></i>
+                </button>
+                <ul
+                  id="attendanceOptions"
+                  class="absolute left-0 right-0 z-10 hidden mt-1 bg-white border border-gray-200 rounded-lg shadow-md"
+                >
+                  <li
+                    class="px-4 py-2 cursor-pointer hover:bg-pink-100"
+                    data-value="1"
+                  >
+                    Yes
+                  </li>
+                  <li
+                    class="px-4 py-2 cursor-pointer hover:bg-pink-100"
+                    data-value="0"
+                  >
+                    No
+                  </li>
+                  <li
+                    class="px-4 py-2 cursor-pointer hover:bg-pink-100"
+                    data-value="2"
+                  >
+                    Not Sure
+                  </li>
+                </ul>
+                <input type="hidden" id="is_attendance" required />
+              </div>
+
+              <!-- Guest Count -->
+              <div id="guestWrapper" class="hidden">
+                <select
+                  id="guest_count"
+                  required
+                  class="flex items-center justify-between w-full px-3 py-2 text-sm bg-white border border-gray-300 rounded-lg focus:ring-2 focus:ring-pink-500"
+                >
+                  <option value="1">1 Person</option>
+                  <option value="2">2 Person</option>
+                  <option value="3">3 Person</option>
+                  <option value="4">4 Person</option>
+                  <option value="5">5 Person</option>
+                  <option value="6">6 Person</option>
+                  <option value="7">7 Person</option>
+                  <option value="8">8 Person</option>
+                  <option value="9">9 Person</option>
+                  <option value="10">10 Person</option>
+                </select>
+              </div>
+
+              <!-- Comment -->
+              <textarea
+                id="comment"
+                maxlength="300"
+                placeholder="Write your wishes..."
+                class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pink-500"
+              ></textarea>
+
+              <!-- Button -->
+              <button
+                type="submit"
+                class="w-full py-3 font-semibold text-white transition-all rounded-lg bg-primary"
+              >
+                Send
+              </button>
+            </form>
+            <!-- Alert sukses -->
+            <div id="formAlert"></div>
+
+            <!-- LIST KOMENTAR -->
+            <div id="commentList" class="space-y-4"></div>
+
+            <!-- Pagination -->
+            <div id="pagination" class="flex justify-center gap-2 mt-6"></div>
+          </div>
+        </section>
 
         <div
           id="musicBtn"
@@ -322,9 +433,9 @@
           <source src="./assets/audio/audio.mp3" type="audio/mpeg" />
         </audio>
       </section>
-      <footer class="p-2 text-center text-white bg-primary font-ovo">
+      <!-- <footer class="p-2 text-center text-white bg-primary font-ovo">
         Copyright &copy; 2025 Rivaldo Valentino😸
-      </footer>
+      </footer> -->
     </main>
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"
