@@ -636,6 +636,14 @@ video {
   top: 1.5rem;
 }
 
+.right-5 {
+  right: 1.25rem;
+}
+
+.top-5 {
+  top: 1.25rem;
+}
+
 .z-10 {
   z-index: 10;
 }
@@ -711,10 +719,6 @@ video {
   margin-inline-end: 0.5rem;
 }
 
-.ml-3 {
-  margin-left: 0.75rem;
-}
-
 .ms-auto {
   margin-inline-start: auto;
 }
@@ -763,6 +767,10 @@ video {
   display: inline-flex;
 }
 
+.grid {
+  display: grid;
+}
+
 .hidden {
   display: none;
 }
@@ -795,8 +803,20 @@ video {
   height: 100svh;
 }
 
+.h-56 {
+  height: 14rem;
+}
+
+.h-auto {
+  height: auto;
+}
+
 .max-h-48 {
   max-height: 12rem;
+}
+
+.max-h-\[90\%\] {
+  max-height: 90%;
 }
 
 .w-10 {
@@ -843,6 +863,10 @@ video {
   max-width: 32rem;
 }
 
+.max-w-\[90\%\] {
+  max-width: 90%;
+}
+
 .flex-shrink-0 {
   flex-shrink: 0;
 }
@@ -863,6 +887,14 @@ video {
 .columns-2 {
   -moz-columns: 2;
        columns: 2;
+}
+
+.grid-cols-1 {
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+}
+
+.grid-cols-2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 .flex-col {
@@ -1019,7 +1051,7 @@ video {
 
 .bg-primary {
   --tw-bg-opacity: 1;
-  background-color: rgb(167 111 111 / var(--tw-bg-opacity, 1));
+  background-color: rgb(124 68 79 / var(--tw-bg-opacity, 1));
 }
 
 .bg-slate-900 {
@@ -1038,6 +1070,10 @@ video {
 
 .bg-white\/60 {
   background-color: rgb(255 255 255 / 0.6);
+}
+
+.bg-black\/90 {
+  background-color: rgb(0 0 0 / 0.9);
 }
 
 .bg-cover {
@@ -1227,11 +1263,6 @@ video {
 .text-gray-800 {
   --tw-text-opacity: 1;
   color: rgb(31 41 55 / var(--tw-text-opacity, 1));
-}
-
-.text-slate-600 {
-  --tw-text-opacity: 1;
-  color: rgb(71 85 105 / var(--tw-text-opacity, 1));
 }
 
 .text-slate-700 {
@@ -1522,7 +1553,7 @@ input[type="number"] {
 }
 
 .hover\:bg-primary\/80:hover {
-  background-color: rgb(167 111 111 / 0.8);
+  background-color: rgb(124 68 79 / 0.8);
 }
 
 .focus\:ring-2:focus {
@@ -1533,7 +1564,13 @@ input[type="number"] {
 
 .focus\:ring-primary:focus {
   --tw-ring-opacity: 1;
-  --tw-ring-color: rgb(167 111 111 / var(--tw-ring-opacity, 1));
+  --tw-ring-color: rgb(124 68 79 / var(--tw-ring-opacity, 1));
+}
+
+@media (min-width: 640px) {
+  .sm\:grid-cols-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
 @media (min-width: 768px) {

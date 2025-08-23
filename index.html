@@ -14,6 +14,11 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
     />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/css/lightbox.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox.min.js"></script>
     <title>Undangan Pernikahan</title>
   </head>
   <body class="max-w-lg mx-auto overflow-hidden">
@@ -157,9 +162,7 @@
             "
           >
             <!-- Title -->
-            <h2 class="mb-2 font-serif text-2xl" id="brideGroom">
-              The Bride & Groom
-            </h2>
+            <h2 class="mb-2 font-serif text-2xl">Mempelai</h2>
             <p class="mb-6 text-sm text-gray-600">
               Dengan Kasih Karunia Tuhan yang mempersatukan Kami Percaya bahwa
               cinta adalah anugerah terindah dari Tuhan,Kini saatnya kami
@@ -198,7 +201,7 @@
 
             <div>
               <img
-                src="./assets/images/profil-1.jpg"
+                src="./assets/images/chrs.jpg"
                 alt="Groom"
                 class="w-full mb-4 border-2 border-white shadow-xl rounded-xl"
               />
@@ -225,9 +228,7 @@
             class="flex flex-col items-center justify-center w-full font-ovo"
           >
             <!-- Title -->
-            <h2 class="mb-8 font-serif text-2xl" id="weddingEvent">
-              Wedding Event
-            </h2>
+            <h2 class="mb-8 font-serif text-2xl">Acara</h2>
 
             <div
               class="w-full max-w-[20rem] overflow-hidden shadow-xl rounded-md border-white border-2"
@@ -309,30 +310,92 @@
             </div>
           </div>
         </div>
+        <h1 class="my-8 text-2xl font-ovo">Gallery</h1>
+        <div class="max-w-[20rem] mx-auto">
+          <div class="grid grid-cols-2 gap-4">
+            <img
+              class="object-cover w-full h-auto shadow cursor-pointer gallery-item rounded-xl"
+              src="./assets/images/gallery/gallery-5.jpg"
+              alt="Image 01"
+            />
+            <img
+              class="object-cover w-full h-auto shadow cursor-pointer gallery-item rounded-xl"
+              src="./assets/images/gallery/gallery-6.jpg"
+              alt="Image 02"
+            />
+            <img
+              class="object-cover w-full h-auto shadow cursor-pointer gallery-item rounded-xl"
+              src="./assets/images/gallery/gallery-3.jpg"
+              alt="Image 03"
+            />
+            <img
+              class="object-cover w-full h-auto shadow cursor-pointer gallery-item rounded-xl"
+              src="./assets/images/gallery/gallery-1.jpg"
+              alt="Image 04"
+            />
+            <img
+              class="object-cover w-full h-auto shadow cursor-pointer gallery-item rounded-xl"
+              src="./assets/images/gallery/gallery-4.jpg"
+              alt="Image 05"
+            />
+            <img
+              class="object-cover w-full h-auto shadow cursor-pointer gallery-item rounded-xl"
+              src="./assets/images/gallery/gallery-2.jpg"
+              alt="Image 06"
+            />
+            <img
+              class="object-cover w-full h-auto shadow cursor-pointer gallery-item rounded-xl"
+              src="./assets/images/gallery/gallery-7.jpg"
+              alt="Image 07"
+            />
+            <img
+              class="object-cover w-full h-auto shadow cursor-pointer gallery-item rounded-xl"
+              src="./assets/images/gallery/gallery-8.jpg"
+              alt="Image 08"
+            />
+          </div>
+        </div>
+
+        <!-- Lightbox Modal -->
+        <div
+          id="lightbox"
+          class="fixed inset-0 z-50 flex items-center justify-center hidden bg-black/90"
+        >
+          <button
+            type="button"
+            id="close-lightbox"
+            class="absolute text-3xl text-white top-5 right-5"
+          >
+            ✕
+          </button>
+          <img
+            id="lightbox-img"
+            class="max-h-[90%] max-w-[90%] rounded-lg shadow-lg"
+          />
+        </div>
+
         <div class="p-8">
-          <h1 class="relative my-4 text-2xl fade-sequence" id="hadiah">
-            Hadiah
-          </h1>
+          <h1 class="relative my-4 text-2xl fade-sequence">Hadiah</h1>
           <p class="text-sm fade-sequence">
-            Your blessings and prayers are a very meaningful gift for us.
-            However, if giving is an expression of your affection, you can give
-            it electronically.
+            Kehadiran serta doa restu Anda sudah sangat berarti. Namun, jika
+            berkenan berbagi kebahagiaan melalui hadiah, berikut informasi yang
+            dapat digunakan
           </p>
 
           <!-- pakai button agar aksesibilitas lebih baik -->
-          <button
+          <!-- <button
             id="hadiahBtn"
             aria-expanded="false"
             class="inline-flex items-center gap-2 px-4 py-2 mt-3 text-sm text-white bg-black rounded-md"
           >
             <i class="bi bi-gift-fill" aria-hidden></i>
             Hadiah
-          </button>
+          </button> -->
         </div>
 
         <div
           id="hadiahCards"
-          class="max-w-[20rem] w-full mx-auto flex flex-col gap-4 hidden"
+          class="max-w-[20rem] w-full mx-auto flex flex-col gap-4 fade-sequence"
         >
           <!-- Card 1 -->
           <div class="w-full">
@@ -445,10 +508,6 @@
                       >
                         Salin
                       </button>
-                      <span
-                        class="hidden ml-3 text-sm text-slate-600 copy-status"
-                        >Tersalin!</span
-                      >
                     </div>
                   </div>
                 </div>
@@ -567,10 +626,6 @@
                       >
                         Salin
                       </button>
-                      <span
-                        class="hidden ml-3 text-sm text-slate-600 copy-status"
-                        >Tersalin!</span
-                      >
                     </div>
                   </div>
                 </div>
@@ -579,55 +634,19 @@
           </div>
         </div>
         <!-- end hadiahCards -->
-        <!-- <h1 class="my-8 text-2xl font-ovo">Gallery</h1>
-        <div
-          class="gap-4 space-y-4 columns-2 md:columns-4 max-w-[20rem] mx-auto"
-        >
-          <img
-            class="w-full shadow rounded-xl"
-            src="./assets/images/gallery-1.jpg"
-            width="232"
-            height="290"
-            alt="Image 01"
-          />
-          <img
-            class="w-full shadow rounded-xl"
-            src="./assets/images/gallery-2.jpg"
-            width="232"
-            height="290"
-            alt="Image 01"
-          />
-          <img
-            class="w-full shadow rounded-xl"
-            src="./assets/images/gallery-3.jpg"
-            width="232"
-            height="290"
-            alt="Image 01"
-          />
-          <img
-            class="w-full shadow rounded-xl"
-            src="./assets/images/gallery-4.jpg"
-            width="232"
-            height="290"
-            alt="Image 01"
-          />
-        </div> -->
+
         <section
           id="commentSection"
           class="py-12 text-white bg-primary font-ovo"
         >
           <div class="max-w-2xl px-6 mx-auto">
             <!-- Title -->
-            <h1
-              class="relative mb-4 text-2xl font-ovo fade-sequence"
-              id="bestWish"
-            >
-              Best Wish
+            <h1 class="relative mb-4 text-2xl font-ovo fade-sequence">
+              Ucapan & Doa
             </h1>
-            <p class="mb-4 font-ovo">
-              Your blessings and prayers are a very meaningful gift for us.
-              However, if giving is an expression of your affection, you can
-              give it electronically.
+            <p class="mb-4 font-ovo fade-sequence">
+              Berikan doa, ucapan, atau konfirmasi kehadiran Anda melalui kolom
+              berikut. Setiap kata akan sangat berarti bagi perjalanan baru kami
             </p>
             <h2
               class="flex items-center justify-center gap-1 mb-6 font-bold text-center text-md"
@@ -794,7 +813,7 @@
 
         <div
           id="musicBtn"
-          class="fixed z-50 flex items-center justify-center text-white bg-gray-400 rounded-full shadow-lg cursor-pointer bottom-6 right-6 w-14 h-14 hover:bg-gray-500"
+          class="fixed z-50 flex items-center justify-center text-center text-white bg-gray-400 rounded-full shadow-lg cursor-pointer bottom-6 right-6 w-14 h-14 hover:bg-gray-500"
         >
           <i id="musicIcon" class="text-xl bi bi-disc"></i>
         </div>

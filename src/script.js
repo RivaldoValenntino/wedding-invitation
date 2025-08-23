@@ -308,8 +308,6 @@ document.addEventListener("DOMContentLoaded", () => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
       });
-      console.log(payload);
-      console.log(res);
 
       btn.disabled = false;
       btn.innerText = "Send";
@@ -432,96 +430,158 @@ document.addEventListener("DOMContentLoaded", () => {
   // END SCRIPT COMMENT
 
   // script hide show wedding gift card
-  toggleGiftCard();
-  function toggleGiftCard() {
-    const btn = document.getElementById("hadiahBtn");
-    const container = document.getElementById("hadiahCards");
+  // toggleGiftCard();
+  // function toggleGiftCard() {
+  //   const btn = document.getElementById("hadiahBtn");
+  //   const container = document.getElementById("hadiahCards");
 
-    btn.addEventListener("click", (e) => {
-      e.preventDefault();
-      const isHidden = container.classList.contains("hidden");
+  //   btn.addEventListener("click", (e) => {
+  //     e.preventDefault();
+  //     const isHidden = container.classList.contains("hidden");
 
-      if (isHidden) {
-        // show container then animate cards in sequence
-        container.classList.remove("hidden");
-        btn.setAttribute("aria-expanded", "true");
+  //     if (isHidden) {
+  //       // show container then animate cards in sequence
+  //       container.classList.remove("hidden");
+  //       btn.setAttribute("aria-expanded", "true");
 
-        const cards = container.querySelectorAll(".card");
-        // pastikan state awal tiap card
-        gsap.set(cards, { y: -20, opacity: 0, pointerEvents: "none" });
-        // animate masuk, stagger agar 1 lalu 2
-        gsap.to(cards, {
-          y: 0,
-          opacity: 1,
-          pointerEvents: "auto",
-          duration: 0.45,
-          ease: "power2.out",
-          stagger: 0.14,
-        });
-      } else {
-        // animate keluar dan setelah selesai sembunyikan container
-        btn.setAttribute("aria-expanded", "false");
-        const cards = Array.from(container.querySelectorAll(".card"));
-        // animate reverse order agar terlihat bagus (card2 dulu lalu card1)
-        gsap.to(cards.reverse(), {
-          y: -20,
-          opacity: 0,
-          duration: 0.32,
-          ease: "power2.in",
-          stagger: 0.12,
-          onComplete: () => {
-            // kembalikan beberapa gaya inline bersih supaya show berikutnya konsisten
-            cards.forEach((c) => {
-              gsap.set(c, { clearProps: "transform,opacity,pointerEvents" });
+  //       const cards = container.querySelectorAll(".card");
+  //       // pastikan state awal tiap card
+  //       gsap.set(cards, { y: -20, opacity: 0, pointerEvents: "none" });
+  //       // animate masuk, stagger agar 1 lalu 2
+  //       gsap.to(cards, {
+  //         y: 0,
+  //         opacity: 1,
+  //         pointerEvents: "auto",
+  //         duration: 0.45,
+  //         ease: "power2.out",
+  //         stagger: 0.14,
+  //       });
+  //     } else {
+  //       // animate keluar dan setelah selesai sembunyikan container
+  //       btn.setAttribute("aria-expanded", "false");
+  //       const cards = Array.from(container.querySelectorAll(".card"));
+  //       // animate reverse order agar terlihat bagus (card2 dulu lalu card1)
+  //       gsap.to(cards.reverse(), {
+  //         y: -20,
+  //         opacity: 0,
+  //         duration: 0.32,
+  //         ease: "power2.in",
+  //         stagger: 0.12,
+  //         onComplete: () => {
+  //           // kembalikan beberapa gaya inline bersih supaya show berikutnya konsisten
+  //           cards.forEach((c) => {
+  //             gsap.set(c, { clearProps: "transform,opacity,pointerEvents" });
+  //           });
+  //           container.classList.add("hidden");
+  //         },
+  //       });
+  //     }
+  //   });
+
+  //   // COPY button logic: bekerja untuk semua kartu kapan pun
+  //   document.querySelectorAll(".copy-btn").forEach((btn) => {
+  //     btn.addEventListener("click", async () => {
+  //       const card = btn.closest(".card");
+  //       if (!card) return;
+  //       const numberEl = card.querySelector(".card-number");
+  //       const txt = numberEl ? numberEl.textContent.trim() : "";
+  //       if (!txt) return;
+
+  //       const originalHtml = btn.innerHTML;
+  //       try {
+  //         await navigator.clipboard.writeText(txt);
+  //         btn.innerHTML = "✓ Tersalin";
+  //         setTimeout(() => {
+  //           btn.innerHTML = originalHtml;
+  //         }, 1200);
+  //       } catch (err) {
+  //         // fallback
+  //         const ta = document.createElement("textarea");
+  //         ta.value = txt;
+  //         ta.style.position = "fixed";
+  //         ta.style.left = "-9999px";
+  //         document.body.appendChild(ta);
+  //         ta.select();
+  //         try {
+  //           document.execCommand("copy");
+  //           btn.innerHTML = "✓ Tersalin";
+  //           setTimeout(() => {
+  //             btn.innerHTML = originalHtml;
+  //           }, 1200);
+  //         } catch (e) {
+  //           alert("Gagal menyalin: " + e);
+  //         }
+  //         document.body.removeChild(ta);
+  //       }
+  //     });
+  //   });
+  // }
+  animateGallery();
+  function animateGallery() {
+    const items = document.querySelectorAll(".gallery-item");
+    if (!items.length) return;
+
+    // set awal semua item
+    gsap.set(items, { y: -30, opacity: 0 });
+
+    const itemsArr = Array.from(items);
+
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          const el = entry.target;
+          const idx = itemsArr.indexOf(el);
+          const delay = Math.min(idx * 0.06, 0.6);
+
+          if (entry.isIntersecting) {
+            // animasi masuk
+            gsap.to(el, {
+              y: 0,
+              opacity: 1,
+              duration: 0.6,
+              ease: "power2.out",
+              delay,
             });
-            container.classList.add("hidden");
-          },
-        });
-      }
-    });
-
-    // COPY button logic: bekerja untuk semua kartu kapan pun
-    document.querySelectorAll(".copy-btn").forEach((btn) => {
-      btn.addEventListener("click", async () => {
-        const card = btn.closest(".card");
-        if (!card) return;
-        const numberEl = card.querySelector(".card-number");
-        const statusEl = card.querySelector(".copy-status");
-        const txt = numberEl ? numberEl.textContent.trim() : "";
-        if (!txt) return;
-
-        const originalHtml = btn.innerHTML;
-        try {
-          await navigator.clipboard.writeText(txt);
-          if (statusEl) statusEl.classList.remove("hidden");
-          btn.innerHTML = "✓ Tersalin";
-          setTimeout(() => {
-            if (statusEl) statusEl.classList.add("hidden");
-            btn.innerHTML = originalHtml;
-          }, 1200);
-        } catch (err) {
-          // fallback
-          const ta = document.createElement("textarea");
-          ta.value = txt;
-          ta.style.position = "fixed";
-          ta.style.left = "-9999px";
-          document.body.appendChild(ta);
-          ta.select();
-          try {
-            document.execCommand("copy");
-            if (statusEl) statusEl.classList.remove("hidden");
-            btn.innerHTML = "✓ Tersalin";
-            setTimeout(() => {
-              if (statusEl) statusEl.classList.add("hidden");
-              btn.innerHTML = originalHtml;
-            }, 1200);
-          } catch (e) {
-            alert("Gagal menyalin: " + e);
+          } else {
+            // animasi keluar (biar bisa infinite ketika scroll bolak-balik)
+            gsap.to(el, {
+              y: -30,
+              opacity: 0,
+              duration: 0.4,
+              ease: "power2.in",
+            });
           }
-          document.body.removeChild(ta);
-        }
-      });
-    });
+        });
+      },
+      {
+        root: null,
+        threshold: 0.15,
+      }
+    );
+
+    itemsArr.forEach((it) => io.observe(it));
   }
+
   // end
+  const galleryItems = document.querySelectorAll(".gallery-item");
+  const lightbox = document.getElementById("lightbox");
+  const lightboxImg = document.getElementById("lightbox-img");
+  const closeBtn = document.getElementById("close-lightbox");
+  galleryItems.forEach((item) => {
+    item.addEventListener("click", () => {
+      lightboxImg.src = item.src; // ambil src gambar
+      lightbox.classList.remove("hidden"); // tampilkan modal
+    });
+  });
+
+  closeBtn.addEventListener("click", () => {
+    lightbox.classList.add("hidden"); // sembunyikan modal
+  });
+
+  // biar bisa close kalau klik area hitam
+  lightbox.addEventListener("click", (e) => {
+    if (e.target === lightbox) {
+      lightbox.classList.add("hidden");
+    }
+  });
 });
