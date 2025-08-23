@@ -628,20 +628,20 @@ video {
   right: 0px;
 }
 
-.right-6 {
-  right: 1.5rem;
-}
-
-.top-6 {
-  top: 1.5rem;
-}
-
 .right-5 {
   right: 1.25rem;
 }
 
+.right-6 {
+  right: 1.5rem;
+}
+
 .top-5 {
   top: 1.25rem;
+}
+
+.top-6 {
+  top: 1.5rem;
 }
 
 .z-10 {
@@ -783,8 +783,16 @@ video {
   height: 7rem;
 }
 
+.h-\[clamp\(100px\2c 60svh\2c 400px\)\] {
+  height: clamp(100px,60svh,400px);
+}
+
 .h-\[clamp\(200px\2c 70svh\2c 500px\)\] {
   height: clamp(200px,70svh,500px);
+}
+
+.h-auto {
+  height: auto;
 }
 
 .h-dvh {
@@ -803,12 +811,12 @@ video {
   height: 100svh;
 }
 
-.h-56 {
-  height: 14rem;
+.h-\[clamp\(200px\2c 60svh\2c 400px\)\] {
+  height: clamp(200px,60svh,400px);
 }
 
-.h-auto {
-  height: auto;
+.h-\[clamp\(200px\2c 60svh\2c 500px\)\] {
+  height: clamp(200px,60svh,500px);
 }
 
 .max-h-48 {
@@ -859,12 +867,12 @@ video {
   max-width: 20rem;
 }
 
-.max-w-lg {
-  max-width: 32rem;
-}
-
 .max-w-\[90\%\] {
   max-width: 90%;
+}
+
+.max-w-lg {
+  max-width: 32rem;
 }
 
 .flex-shrink-0 {
@@ -882,15 +890,6 @@ video {
 
 .cursor-pointer {
   cursor: pointer;
-}
-
-.columns-2 {
-  -moz-columns: 2;
-       columns: 2;
-}
-
-.grid-cols-1 {
-  grid-template-columns: repeat(1, minmax(0, 1fr));
 }
 
 .grid-cols-2 {
@@ -1044,6 +1043,10 @@ video {
   background-color: rgb(0 0 0 / 0.6);
 }
 
+.bg-black\/90 {
+  background-color: rgb(0 0 0 / 0.9);
+}
+
 .bg-gray-400 {
   --tw-bg-opacity: 1;
   background-color: rgb(156 163 175 / var(--tw-bg-opacity, 1));
@@ -1070,10 +1073,6 @@ video {
 
 .bg-white\/60 {
   background-color: rgb(255 255 255 / 0.6);
-}
-
-.bg-black\/90 {
-  background-color: rgb(0 0 0 / 0.9);
 }
 
 .bg-cover {
@@ -1452,7 +1451,7 @@ video {
 }
 
 #bestWish::after {
-  content: "Best Wish";
+  content: "Ucapan & Doa";
   position: absolute;
   top: 0px;
   left: 50%;
@@ -1565,17 +1564,4 @@ input[type="number"] {
 .focus\:ring-primary:focus {
   --tw-ring-opacity: 1;
   --tw-ring-color: rgb(124 68 79 / var(--tw-ring-opacity, 1));
-}
-
-@media (min-width: 640px) {
-  .sm\:grid-cols-2 {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
-
-@media (min-width: 768px) {
-  .md\:columns-4 {
-    -moz-columns: 4;
-         columns: 4;
-  }
 }
