@@ -479,42 +479,42 @@ document.addEventListener("DOMContentLoaded", () => {
   //   });
 
   //   // COPY button logic: bekerja untuk semua kartu kapan pun
-  //   document.querySelectorAll(".copy-btn").forEach((btn) => {
-  //     btn.addEventListener("click", async () => {
-  //       const card = btn.closest(".card");
-  //       if (!card) return;
-  //       const numberEl = card.querySelector(".card-number");
-  //       const txt = numberEl ? numberEl.textContent.trim() : "";
-  //       if (!txt) return;
+  document.querySelectorAll(".copy-btn").forEach((btn) => {
+    btn.addEventListener("click", async () => {
+      const card = btn.closest(".card");
+      if (!card) return;
+      const numberEl = card.querySelector(".card-number");
+      const txt = numberEl ? numberEl.textContent.trim() : "";
+      if (!txt) return;
 
-  //       const originalHtml = btn.innerHTML;
-  //       try {
-  //         await navigator.clipboard.writeText(txt);
-  //         btn.innerHTML = "✓ Tersalin";
-  //         setTimeout(() => {
-  //           btn.innerHTML = originalHtml;
-  //         }, 1200);
-  //       } catch (err) {
-  //         // fallback
-  //         const ta = document.createElement("textarea");
-  //         ta.value = txt;
-  //         ta.style.position = "fixed";
-  //         ta.style.left = "-9999px";
-  //         document.body.appendChild(ta);
-  //         ta.select();
-  //         try {
-  //           document.execCommand("copy");
-  //           btn.innerHTML = "✓ Tersalin";
-  //           setTimeout(() => {
-  //             btn.innerHTML = originalHtml;
-  //           }, 1200);
-  //         } catch (e) {
-  //           alert("Gagal menyalin: " + e);
-  //         }
-  //         document.body.removeChild(ta);
-  //       }
-  //     });
-  //   });
+      const originalHtml = btn.innerHTML;
+      try {
+        await navigator.clipboard.writeText(txt);
+        btn.innerHTML = "✓ Tersalin";
+        setTimeout(() => {
+          btn.innerHTML = originalHtml;
+        }, 1200);
+      } catch (err) {
+        // fallback
+        const ta = document.createElement("textarea");
+        ta.value = txt;
+        ta.style.position = "fixed";
+        ta.style.left = "-9999px";
+        document.body.appendChild(ta);
+        ta.select();
+        try {
+          document.execCommand("copy");
+          btn.innerHTML = "✓ Tersalin";
+          setTimeout(() => {
+            btn.innerHTML = originalHtml;
+          }, 1200);
+        } catch (e) {
+          alert("Gagal menyalin: " + e);
+        }
+        document.body.removeChild(ta);
+      }
+    });
+  });
   // }
   animateGallery();
   function animateGallery() {
