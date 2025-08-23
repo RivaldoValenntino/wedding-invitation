@@ -112,7 +112,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (distance <= 0) {
       clearInterval(countdownFunc);
       document.getElementById("countdown").innerHTML =
-        "<p class='text-2xl font-bold'>🎉 Happy Wedding Day 🎉</p>";
+        "<p class='text-2xl font-bold font-ovo'>🎉 Happy Wedding Day 🎉</p>";
       return;
     }
 
