@@ -363,6 +363,27 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
+  // Guest dropdown
+  const guestBtn = document.getElementById("guestBtn");
+  const guestText = document.getElementById("guestText");
+  const guestOptions = document.getElementById("guestOptions");
+  const guestInput = document.getElementById("guest_count");
+
+  guestBtn.addEventListener("click", () => {
+    guestOptions.classList.toggle("hidden");
+  });
+
+  guestOptions.querySelectorAll("li").forEach((item) => {
+    item.addEventListener("click", () => {
+      const value = item.getAttribute("data-value");
+      const label = item.innerText;
+      guestInput.value = value;
+      guestText.innerText = label;
+      guestText.classList.remove("text-gray-500");
+      guestOptions.classList.add("hidden");
+    });
+  });
+
   // Initial load
   loadComments();
 
