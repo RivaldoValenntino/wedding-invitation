@@ -31,20 +31,21 @@ document.addEventListener("DOMContentLoaded", () => {
     if (blocked.includes(e.key)) e.preventDefault();
   };
 
-  // AUTOPLAY MUSIC
   const musicBtn = document.getElementById("musicBtn");
+  const musicIcon = document.getElementById("musicIcon");
   const bgMusic = document.getElementById("bgMusic");
 
   let isPlaying = false;
 
-  // Toggle play/pause saat tombol musik diklik
   musicBtn.addEventListener("click", () => {
     if (isPlaying) {
       bgMusic.pause();
-      musicBtn.classList.remove("playing");
+      musicIcon.classList.remove("bi-pause-fill");
+      musicIcon.classList.add("bi-play-fill");
     } else {
       bgMusic.play();
-      musicBtn.classList.add("playing");
+      musicIcon.classList.remove("bi-play-fill");
+      musicIcon.classList.add("bi-pause-fill");
     }
     isPlaying = !isPlaying;
   });

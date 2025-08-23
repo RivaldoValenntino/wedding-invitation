@@ -171,7 +171,7 @@
   z-index: 1;
 }
 
-.playing {
+/* .playing {
   animation: spin 3s linear infinite;
 }
 
@@ -179,7 +179,7 @@
   100% {
     transform: rotate(360deg);
   }
-}
+} */
 
 /* Chrome, Safari, Edge, Opera */
 input::-webkit-outer-spin-button,
