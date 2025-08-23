@@ -331,37 +331,11 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
   // Attendance dropdown
+  // Attendance dropdown
   const attendanceBtn = document.getElementById("attendanceBtn");
   const attendanceText = document.getElementById("attendanceText");
   const attendanceOptions = document.getElementById("attendanceOptions");
   const attendanceInput = document.getElementById("is_attendance");
-
-  attendanceBtn.addEventListener("click", () => {
-    attendanceOptions.classList.toggle("hidden");
-  });
-
-  attendanceOptions.querySelectorAll("li").forEach((item) => {
-    item.addEventListener("click", () => {
-      const value = item.getAttribute("data-value");
-      const label = item.innerText;
-      attendanceInput.value = value;
-      attendanceText.innerText = label;
-      attendanceText.classList.remove("text-gray-500");
-      attendanceOptions.classList.add("hidden");
-
-      const guestWrapper = document.getElementById("guestWrapper");
-      const guestSelect = document.getElementById("guest_count");
-
-      if (value === "1") {
-        guestWrapper.classList.remove("hidden");
-        guestSelect.setAttribute("required", "true"); // wajib diisi kalau Yes
-      } else {
-        guestWrapper.classList.add("hidden");
-        guestSelect.removeAttribute("required"); // hilangin required kalau bukan Yes
-        guestSelect.value = ""; // reset nilai
-      }
-    });
-  });
 
   // Guest dropdown
   const guestBtn = document.getElementById("guestBtn");
@@ -369,10 +343,66 @@ document.addEventListener("DOMContentLoaded", () => {
   const guestOptions = document.getElementById("guestOptions");
   const guestInput = document.getElementById("guest_count");
 
-  guestBtn.addEventListener("click", () => {
-    guestOptions.classList.toggle("hidden");
+  // Fungsi tutup semua dropdown
+  function closeAllDropdowns() {
+    attendanceOptions.classList.add("hidden");
+    guestOptions.classList.add("hidden");
+
+    // reset icon kalau pakai arrow dinamis
+    attendanceBtn.querySelector("i").classList.remove("bi-chevron-up");
+    attendanceBtn.querySelector("i").classList.add("bi-chevron-down");
+
+    guestBtn.querySelector("i").classList.remove("bi-chevron-up");
+    guestBtn.querySelector("i").classList.add("bi-chevron-down");
+  }
+
+  // Toggle attendance
+  attendanceBtn.addEventListener("click", () => {
+    const isHidden = attendanceOptions.classList.contains("hidden");
+    closeAllDropdowns();
+    if (isHidden) {
+      attendanceOptions.classList.remove("hidden");
+      attendanceBtn.querySelector("i").classList.remove("bi-chevron-down");
+      attendanceBtn.querySelector("i").classList.add("bi-chevron-up");
+    }
   });
 
+  // Pilih attendance
+  attendanceOptions.querySelectorAll("li").forEach((item) => {
+    item.addEventListener("click", () => {
+      const value = item.getAttribute("data-value");
+      const label = item.innerText;
+      attendanceInput.value = value;
+      attendanceText.innerText = label;
+      attendanceText.classList.remove("text-gray-500");
+      closeAllDropdowns();
+
+      const guestWrapper = document.getElementById("guestWrapper");
+      if (value === "1") {
+        guestWrapper.classList.remove("hidden");
+        guestInput.setAttribute("required", "true");
+      } else {
+        guestWrapper.classList.add("hidden");
+        guestInput.removeAttribute("required");
+        guestInput.value = "";
+        guestText.innerText = "Guest Count";
+        guestText.classList.add("text-gray-500");
+      }
+    });
+  });
+
+  // Toggle guest
+  guestBtn.addEventListener("click", () => {
+    const isHidden = guestOptions.classList.contains("hidden");
+    closeAllDropdowns();
+    if (isHidden) {
+      guestOptions.classList.remove("hidden");
+      guestBtn.querySelector("i").classList.remove("bi-chevron-down");
+      guestBtn.querySelector("i").classList.add("bi-chevron-up");
+    }
+  });
+
+  // Pilih guest
   guestOptions.querySelectorAll("li").forEach((item) => {
     item.addEventListener("click", () => {
       const value = item.getAttribute("data-value");
@@ -380,8 +410,20 @@ document.addEventListener("DOMContentLoaded", () => {
       guestInput.value = value;
       guestText.innerText = label;
       guestText.classList.remove("text-gray-500");
-      guestOptions.classList.add("hidden");
+      closeAllDropdowns();
     });
+  });
+
+  // Tutup semua kalau klik di luar
+  document.addEventListener("click", (e) => {
+    if (
+      !attendanceBtn.contains(e.target) &&
+      !attendanceOptions.contains(e.target) &&
+      !guestBtn.contains(e.target) &&
+      !guestOptions.contains(e.target)
+    ) {
+      closeAllDropdowns();
+    }
   });
 
   // Initial load
