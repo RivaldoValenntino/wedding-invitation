@@ -287,7 +287,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const btn = e.target.querySelector("button[type='submit']");
       btn.disabled = true;
-      btn.innerText = "Loading...";
+      btn.innerText = "Mengirim...";
 
       const payload = {
         name: document.getElementById("name").value.trim(),
@@ -300,7 +300,7 @@ document.addEventListener("DOMContentLoaded", () => {
       // Validasi biar semua field wajib
       if (!payload.name || payload.is_attendance === null || !payload.comment) {
         btn.disabled = false;
-        btn.innerText = "Send";
+        btn.innerText = "Kirim";
         return;
       }
 
@@ -311,7 +311,7 @@ document.addEventListener("DOMContentLoaded", () => {
       });
 
       btn.disabled = false;
-      btn.innerText = "Send";
+      btn.innerText = "Kirim";
 
       if (res.ok) {
         document.getElementById("commentForm").reset();
