@@ -250,31 +250,84 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (data.last_page <= 1) return;
 
+    const current = data.current_page;
+    const last = data.last_page;
+    const maxVisible = 3; // jumlah maksimal page number yang ditampilkan
+
+    // Previous button
     if (data.prev_page_url) {
       const prevBtn = document.createElement("button");
       prevBtn.innerText = "Previous";
       prevBtn.className = "px-3 py-1 text-white hover:underline";
-      prevBtn.onclick = () => loadComments(data.current_page - 1);
+      prevBtn.onclick = () => loadComments(current - 1);
       pagination.appendChild(prevBtn);
     }
 
-    for (let i = 1; i <= data.last_page; i++) {
+    let start = Math.max(1, current - Math.floor(maxVisible / 2));
+    let end = start + maxVisible - 1;
+
+    if (end > last) {
+      end = last;
+      start = Math.max(1, end - maxVisible + 1);
+    }
+
+    // Jika start > 1, tampilkan 1 dan ...
+    if (start > 1) {
+      const firstPage = document.createElement("button");
+      firstPage.innerText = "1";
+      firstPage.className =
+        "px-3 py-1 " +
+        (1 === current
+          ? "font-bold underline text-white"
+          : "text-white hover:underline");
+      firstPage.onclick = () => loadComments(1);
+      pagination.appendChild(firstPage);
+
+      if (start > 2) {
+        const dots = document.createElement("span");
+        dots.innerText = "...";
+        dots.className = "px-2 text-white";
+        pagination.appendChild(dots);
+      }
+    }
+
+    for (let i = start; i <= end; i++) {
       const pageBtn = document.createElement("button");
       pageBtn.innerText = i;
       pageBtn.className =
         "px-3 py-1 rounded-md " +
-        (i === data.current_page
+        (i === current
           ? "font-bold underline text-white"
           : "text-white hover:underline");
       pageBtn.onclick = () => loadComments(i);
       pagination.appendChild(pageBtn);
     }
 
+    if (end < last) {
+      if (end < last - 1) {
+        const dots = document.createElement("span");
+        dots.innerText = "...";
+        dots.className = "px-2 text-white";
+        pagination.appendChild(dots);
+      }
+
+      const lastPage = document.createElement("button");
+      lastPage.innerText = last;
+      lastPage.className =
+        "px-3 py-1 " +
+        (last === current
+          ? "font-bold underline text-white"
+          : "text-white hover:underline");
+      lastPage.onclick = () => loadComments(last);
+      pagination.appendChild(lastPage);
+    }
+
+    // Next button
     if (data.next_page_url) {
       const nextBtn = document.createElement("button");
       nextBtn.innerText = "Next";
       nextBtn.className = "px-3 py-1 text-white hover:underline";
-      nextBtn.onclick = () => loadComments(data.current_page + 1);
+      nextBtn.onclick = () => loadComments(current + 1);
       pagination.appendChild(nextBtn);
     }
   }
